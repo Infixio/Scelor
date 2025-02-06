@@ -5,25 +5,72 @@ import PremiumCard from '@/app/components/PremiumCard'
 import AnimatedHeading from '@/app/components/AnimatedHeading';
 import MainButton from '@/app/components/MainButton';
 import FeatureCard from '@/app/components/FeatureCard';
+import Link from "next/link";
 const features = [
   {
     title: 'Neural Architecture',
     description: 'Advanced neural network configurations with real-time monitoring',
-    icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#7E3AF2]" fill="none" viewBox="0 0 24 24" stroke="currentColor"/>,
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-6 w-6">
+        <defs>
+          <linearGradient id="a" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style={{ stopColor: '#7E3AF2' }} />
+            <stop offset="100%" style={{ stopColor: '#00C2FF' }} />
+          </linearGradient>
+        </defs>
+        <g fill="url(#a)">
+          <circle cx="12" cy="8" r="2" />
+          <circle cx="8" cy="16" r="2" />
+          <circle cx="16" cy="16" r="2" />
+          <path d="M12 10l-4 6m8-6l-4 6m4-12l4 6m-4-6v12" opacity="0.8" />
+        </g>
+      </svg>
+    ),
     color1: '#7E3AF2',
     color2: '#00C2FF'
   },
   {
     title: 'Distributed Agents',
     description: 'Decentralized autonomous systems with self-learning capabilities',
-    icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#7E3AF2]" fill="none" viewBox="0 0 24 24" stroke="currentColor"/>,
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-6 w-6">
+        <defs>
+          <linearGradient id="b" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style={{ stopColor: '#00C2FF' }} />
+            <stop offset="100%" style={{ stopColor: '#2CDB93' }} />
+          </linearGradient>
+        </defs>
+        <g fill="url(#b)">
+          <circle cx="12" cy="12" r="2" />
+          <circle cx="18" cy="6" r="2" />
+          <circle cx="6" cy="6" r="2" />
+          <circle cx="18" cy="18" r="2" />
+          <circle cx="6" cy="18" r="2" />
+          <path d="M8 12l4-6 4 6-4 6z" opacity="0.8" />
+        </g>
+      </svg>
+    ),
     color1: '#00C2FF',
     color2: '#2CDB93'
   },
   {
     title: 'Real-time Analytics',
     description: 'Instant insights with predictive modeling and visualization',
-    icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#7E3AF2]" fill="none" viewBox="0 0 24 24" stroke="currentColor"/>,
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-6 w-6">
+        <defs>
+          <linearGradient id="c" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style={{ stopColor: '#FF6B6B' }} />
+            <stop offset="100%" style={{ stopColor: '#FFA500' }} />
+          </linearGradient>
+        </defs>
+        <g fill="url(#c)">
+          <path d="M3 21h18v-2H3v2z" />
+          <path d="M6 15l3-6 3 6 3-6 3 6" opacity="0.9" />
+          <path d="M12 9l-3 6h6z" opacity="0.7" />
+        </g>
+      </svg>
+    ),
     color1: '#FF6B6B',
     color2: '#FFA500'
   }
@@ -55,11 +102,12 @@ export default function Home() {
             Scelor
           </div>
           <ul className="flex space-x-8 items-center">
-            {['Product', 'Solutions', 'Resources', 'Company'].map((item) => (
+            {['Workflows', 'Documentation', 'About'].map((item) => (
               <li key={item}>
-                <a className="text-[#A0A0C0] hover:text-white transition-all font-medium cursor-pointer">
+                {/* <a className="text-[#A0A0C0] hover:text-white transition-all font-medium cursor-pointer">
                   {item}
-                </a>
+                </a> */}
+                <Link href= {`/${item}`} className="text-[#A0A0C0] hover:text-white transition-all font-medium cursor-pointer">{item}</Link>
               </li>
             ))}
             <button className="bg-gradient-to-r from-[#7E3AF2] to-[#00C2FF] text-white px-6 py-2 rounded-full hover:scale-105 transition-transform">
@@ -107,11 +155,7 @@ export default function Home() {
       key={feature.title}
       title={feature.title}
       description={feature.description}
-      icon={
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="..." />
-        </svg>
-      }
+      icon={feature.icon}
       color1={feature.color1}
       color2={feature.color2}
     />
@@ -178,30 +222,74 @@ export default function Home() {
         
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           { [
-              { 
-                title: 'Smart Automation', 
-                description: 'AI-powered decision making with real-time adjustments',
-                icon: 'M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25',
-                color1: '#7E3AF2',
-                color2: '#00C2FF'
-              },
-              {
-                title: 'Enterprise Security',
-                description: 'Military-grade encryption and compliance protocols',
-                icon: 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z',
-                color1: '#00C2FF',
-                color2: '#2CDB93'
-              },
-            ].map((feature, i) => (
+  { 
+    title: 'Smart Automation', 
+    description: 'AI-powered decision making with real-time adjustments',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none">
+        <defs>
+          <linearGradient id="smartGradient" x1="0%" y1="0%" x2="100%" y2="100%" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor="#7E3AF2" />
+            <stop offset="100%" stopColor="#00C2FF" />
+          </linearGradient>
+        </defs>
+        <path
+          stroke="url(#smartGradient)"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25"
+          style={{ stroke: '#7E3AF2' }} // Fallback color
+        />
+        <path
+          stroke="url(#smartGradient)"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          fill="url(#smartGradient)"
+          d="M12 8.25a.75.75 0 100-1.5.75.75 0 000 1.5zM12 12.75a.75.75 0 100-1.5.75.75 0 000 1.5zM12 17.25a.75.75 0 100-1.5.75.75 0 000 1.5z"
+        />
+      </svg>
+    ),
+    color1: '#7E3AF2',
+    color2: '#00C2FF'
+  },
+  {
+    title: 'Enterprise Security',
+    description: 'Military-grade encryption and compliance protocols',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none">
+        <defs>
+          <linearGradient id="securityGradient" x1="0%" y1="0%" x2="100%" y2="100%" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor="#00C2FF" />
+            <stop offset="100%" stopColor="#2CDB93" />
+          </linearGradient>
+        </defs>
+        <path
+          stroke="url(#securityGradient)"
+          fill="url(#securityGradient)"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"
+          style={{ stroke: '#00C2FF', fill: '#00C2FF' }} // Fallback colors
+        />
+        <path
+          stroke="url(#securityGradient)"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          d="M12 6.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
+          fill="url(#securityGradient)"
+        />
+      </svg>
+    ),
+    color1: '#00C2FF',
+    color2: '#2CDB93'
+  }
+].map((feature, i) => (
         <FeatureCard
             key={feature.title}
             title={feature.title}
             description={feature.description}
-            icon={
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="..." />
-              </svg>
-            }
+            icon={feature.icon}
             color1={feature.color1}
             color2={feature.color2}
           />
@@ -233,7 +321,7 @@ export default function Home() {
             <div>
               <h3 className="text-white text-lg font-semibold mb-4">Product</h3>
               <ul className="space-y-3">
-                {['Features', 'Integrations', 'Pricing', 'Documentation'].map((link) => (
+                {['Workflows', 'About', 'Pricing', 'Documentation'].map((link) => (
                   <li key={link}>
                     <a href="#" className="hover:text-[#7E3AF2] transition-colors">{link}</a>
                   </li>

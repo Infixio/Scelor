@@ -26,7 +26,7 @@ export default function Workflows() {
       >
         <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
           <div className="text-2xl font-bold bg-gradient-to-r from-[#7E3AF2] to-[#00C2FF] bg-clip-text text-transparent">
-            Scelor
+          <Link href="/">Scelor</Link>
           </div>
           <ul className="flex space-x-8 items-center">
             {['Workflows', 'Documentation', 'About'].map((item) => (

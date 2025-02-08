@@ -14,6 +14,7 @@ export default function Workflows() {
     { workflowName: "Market Researcher", description: "Real-time market intelligence" },
     { workflowName: "Doc Analyzer", description: "Smart document processing" },
     { workflowName: "Code Generator", description: "AI-assisted development" },
+    
     { workflowName: "Data Cruncher", description: "Automated data processing" },
   ];
 

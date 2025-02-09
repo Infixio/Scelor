@@ -1,5 +1,6 @@
 // components/WorkflowCard.tsx
 'use client';
+import Link from 'next/link';
 
 import { motion, useMotionTemplate, useMotionValue } from 'framer-motion';
 import { useState } from 'react';
@@ -8,12 +9,14 @@ interface WorkflowCardProps {
   workflowName: string;
   workflowDescription: string;
   buttonText: string;
+  workflow_id:string;
 }
 
 export default function WorkflowCard({
   workflowName,
   workflowDescription,
   buttonText,
+  workflow_id
 }: WorkflowCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const mouseX = useMotionValue(0);
@@ -63,8 +66,9 @@ export default function WorkflowCard({
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         className="px-6 py-2 bg-gradient-to-r from-[#7E3AF2] to-[#00C2FF] rounded-full font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300"
+
       >
-        {buttonText}
+        <Link href={`/${workflow_id}`}>{buttonText}</Link>
       </motion.button>
     </motion.div>
   );

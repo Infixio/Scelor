@@ -10,6 +10,7 @@ interface AutoScrollCarouselProps {
   features: Array<{
     workflowName: string;
     description: string;
+    workflow_id:string;
   }>;
   
   /**
@@ -29,6 +30,7 @@ interface AutoScrollCarouselProps {
    * Text for the action button (default: "Try it out!")
    */
   buttonText?: string;
+
   
   /**
    * Scroll speed in pixels per frame (default: 1)
@@ -89,6 +91,7 @@ export default function AutoScrollCarousel({
                 workflowName={feature.workflowName}
                 workflowDescription={feature.description}
                 buttonText={buttonText}
+                workflow_id={feature.workflow_id}
               />
             </div>
           ))}

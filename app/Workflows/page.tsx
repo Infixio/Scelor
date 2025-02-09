@@ -15,6 +15,7 @@ export default function Workflows() {
     { workflowName: "Doc Analyzer", description: "Smart document processing" },
     
     { workflowName: "Code Generator", description: "AI-assisted development" },
+    
     { workflowName: "Data Cruncher", description: "Automated data processing" },
   ];
 

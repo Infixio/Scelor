@@ -4,6 +4,7 @@
 import { motion, useMotionTemplate, useMotionValue, useTransform } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import Particles from './Particles';
+import Link from "next/link";
 
 interface PremiumCardProps {
   title: string;
@@ -12,6 +13,7 @@ interface PremiumCardProps {
   buttonText: string;
   color1?: string;
   color2?: string;
+  workflowid:string;
 }
 
 export default function PremiumCard({
@@ -20,7 +22,8 @@ export default function PremiumCard({
   features,
   buttonText,
   color1 = '#7E3AF2',
-  color2 = '#00C2FF'
+  color2 = '#00C2FF',
+  workflowid
 }: PremiumCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const mouseX = useMotionValue(0);
@@ -154,7 +157,7 @@ export default function PremiumCard({
             font-semibold text-white shadow-lg hover:shadow-xl hover:shadow-[#7E3AF2]/30 
             transition-all duration-300 relative overflow-hidden"
         >
-          <span className="relative z-10 bottom-1">{buttonText}</span>
+          <Link href={`/${workflowid}`}><span className="relative z-10 bottom-1">{buttonText}</span></Link>
           <motion.div
             animate={{
               background: [

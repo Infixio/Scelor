@@ -102,7 +102,7 @@ export default function Home() {
           <Link href="/">Scelor</Link>
           </div>
           <ul className="flex space-x-8 items-center">
-            {['Workflows', 'Documentation', 'About'].map((item) => (
+            {['Workflows', 'Pricing', 'About'].map((item) => (
               <li key={item}>
                 {/* <a className="text-[#A0A0C0] hover:text-white transition-all font-medium cursor-pointer">
                   {item}

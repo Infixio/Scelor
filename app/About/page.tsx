@@ -70,7 +70,7 @@ export default function About() {
             <Link href="/">Scelor</Link>
           </div>
           <ul className="flex space-x-8 items-center">
-            {['Workflows', 'Documentation', 'About'].map((item) => (
+            {['Workflows', 'Pricing', 'About'].map((item) => (
               <li key={item}>
                 <Link 
                   href={`/${item}`} 

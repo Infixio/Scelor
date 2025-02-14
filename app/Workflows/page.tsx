@@ -8,23 +8,127 @@ import AutoScrollCarousel from '@/app/components/AutoScrollCarousel';
 
 
 export default function Workflows() {
-  const features = [
-    { workflowName: "Image Analysis", description: "Advanced visual recognition system", workflow_id:"ImageAnalysis" },
-    { workflowName: "Video Summarizer", description: "AI-powered video comprehension", workflow_id:"VideoSummarizer" },
-    { workflowName: "Market Researcher", description: "Real-time market intelligence", workflow_id:"MarketResearcher" },
-    { workflowName: "Doc Analyzer", description: "Smart document processing", workflow_id:"DocAnalyzer" },
-    { workflowName: "Code Generator", description: "AI-assisted development", workflow_id:"CodeGenerator" },
+  // const features = [
+  //   { workflowName: "Image Analysis", description: "Advanced visual recognition system", workflow_id:"ImageAnalysis" },
+  //   { workflowName: "Video Summarizer", description: "AI-powered video comprehension", workflow_id:"VideoSummarizer" },
+  //   { workflowName: "Market Researcher", description: "Real-time market intelligence", workflow_id:"MarketResearcher" },
+  //   { workflowName: "Doc Analyzer", description: "Smart document processing", workflow_id:"DocAnalyzer" },
+  //   { workflowName: "Code Generator", description: "AI-assisted development", workflow_id:"CodeGenerator" },
 
-    { workflowName: "Image Analysis", description: "Advanced visual recognition system" },
-    { workflowName: "Video Summarizer", description: "AI-powered video comprehension" },
-    { workflowName: "Market Researcher", description: "Real-time market intelligence" },
-    { workflowName: "Doc Analyzer", description: "Smart document processing" },
+  //   { workflowName: "Image Analysis", description: "Advanced visual recognition system" },
+  //   { workflowName: "Video Summarizer", description: "AI-powered video comprehension" },
+  //   { workflowName: "Market Researcher", description: "Real-time market intelligence" },
+  //   { workflowName: "Doc Analyzer", description: "Smart document processing" },
     
-    { workflowName: "Code Generator", description: "AI-assisted development" },
+  //   { workflowName: "Code Generator", description: "AI-assisted development" },
 
     
-    { workflowName: "Data Cruncher", description: "Automated data processing", workflow_id:"DataCruncher" },
-  ];
+  //   { workflowName: "Data Cruncher", description: "Automated data processing", workflow_id:"DataCruncher" },
+  // ];
+
+  // Workflow page
+// In your Workflow page component
+const socialMediaFlows = [
+  { 
+    workflowName: "Youtube Video to Blog", 
+    description: "Convert video content into SEO-friendly blog posts",
+    workflow_id: "youtubeVideoToBlog"
+  },
+  {
+    workflowName: "YT Video Summarizer",
+    description: "Create concise Youtube video summaries for social snippets",
+    workflow_id: "youtubeSummarizer"
+  },
+  {
+    workflowName: "Blog Repurposer",
+    description: "Transform blogs into multiple social media formats",
+    workflow_id: "blogRepurposer"
+  },
+  {
+    workflowName: "TikTok from Youtube",
+    description: "Automatically create TikTok clips from long videos",
+    workflow_id: "tiktokFromYoutube"
+  },
+  {
+    workflowName: "Copywriter/Content Writer",
+    description: "AI-powered content creation for social media",
+    workflow_id: "socialContentWriter"
+  }
+];
+
+const aiFlows = [
+  {
+    workflowName: "Image Analyzer",
+    description: "Advanced visual recognition and metadata extraction",
+    workflow_id: "ImageAnalysis"
+  },
+  {
+    workflowName: "Video Analyzer",
+    description: "Frame-by-frame video content analysis",
+    workflow_id: "videoAnalyzer"
+  },
+  {
+    workflowName: "Web Scraper",
+    description: "Automated data extraction from websites",
+    workflow_id: "webScraper"
+  },
+  {
+    workflowName: "Code Generator Agent",
+    description: "AI-assisted code writing and debugging",
+    workflow_id: "codeGenerator"
+  },
+  {
+    workflowName: "SEO Optimization Agent",
+    description: "Automated SEO analysis and recommendations",
+    workflow_id: "seoOptimizer"
+  }
+];
+
+const researchFlows = [
+  {
+    workflowName: "Market Researcher Agent",
+    description: "Real-time market trend analysis",
+    workflow_id: "marketResearcher"
+  },
+  {
+    workflowName: "Keyword Researcher",
+    description: "SEO keyword discovery and analysis",
+    workflow_id: "keywordResearcher"
+  },
+  {
+    workflowName: "Competitor Researcher",
+    description: "Competitive intelligence analysis",
+    workflow_id: "competitorAnalyst"
+  },
+  {
+    workflowName: "Segmentation Analyzer",
+    description: "AI-driven customer profiling",
+    workflow_id: "customerSegmentation"
+  },
+  {
+    workflowName: "Company Researcher",
+    description: "Deep dive into company profiles",
+    workflow_id: "companyResearcher"
+  }
+];
+
+const generalFlows = [
+  {
+    workflowName: "SAAS Price Calculator Agent",
+    description: "Optimal pricing strategy analysis",
+    workflow_id: "saasPricing"
+  },
+  {
+    workflowName: "Travel Planning Agent",
+    description: "AI-powered itinerary generation",
+    workflow_id: "travelPlanner"
+  },
+  {
+    workflowName: "Hashtag Researcher",
+    description: "Trending hashtag recommendations",
+    workflow_id: "hashtagResearcher"
+  }
+];
 
   return (
     <div className="min-h-screen bg-[#0A0A0F] overflow-hidden">
@@ -38,7 +142,7 @@ export default function Workflows() {
           <Link href="/">Scelor</Link>
           </div>
           <ul className="flex space-x-8 items-center">
-            {['Workflows', 'Documentation', 'About'].map((item) => (
+            {['Workflows', 'Pricing', 'About'].map((item) => (
               <li key={item}>
                 <Link href={`/${item}`} className="text-[#A0A0C0] hover:text-white transition-all font-medium cursor-pointer">
                   {item}
@@ -66,26 +170,37 @@ export default function Workflows() {
           </p>
         </div>
 
-        {/* Category 1 */}
-        <AutoScrollCarousel 
-          features={features} 
-          title="Social Media Flows"
-          description='test description 1'
-        />
+            {/* Social Media Flows */}
+            <AutoScrollCarousel 
+              features={socialMediaFlows} 
+              title="Social Media Flows"
+              description="Automate your social media content pipeline"
+              direction="left"
+            />
 
-        {/* Category 2 */}
-        <AutoScrollCarousel 
-          features={features} 
-          title="AI Flows"
-          description='test description 2'
-        />
+            {/* AI Flows */}
+            <AutoScrollCarousel 
+              features={aiFlows} 
+              title="AI Flows"
+              description="Advanced artificial intelligence solutions"
+              direction="right"
+            />
 
-        {/* Category 3 */}
-        <AutoScrollCarousel 
-          features={features} 
-          title="General Flows"
-          description='test description 3'
-        />
+            {/* Research Flows */}
+            <AutoScrollCarousel 
+              features={researchFlows} 
+              title="Research Flows"
+              description="Data-driven insights and analysis"
+              direction="left"
+            />
+
+            {/* General Flows */}
+            <AutoScrollCarousel 
+              features={generalFlows} 
+              title="General Flows"
+              description="Essential business automation tools"
+              direction="right"
+            />
       </div>
       <footer className="relative z-10 bg-gradient-to-b from-[#0A0A0F] to-[#00101A] border-t border-[#2A2A3C]">
         <div className="container mx-auto px-6 py-16">

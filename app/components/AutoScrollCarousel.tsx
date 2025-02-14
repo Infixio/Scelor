@@ -1,6 +1,6 @@
 // components/AutoScrollCarousel.tsx
 'use client';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useMemo } from 'react';
 import WorkflowCard from '@/app/components/WorkflowCard';
 
 interface AutoScrollCarouselProps {
@@ -36,6 +36,8 @@ interface AutoScrollCarouselProps {
    * Scroll speed in pixels per frame (default: 1)
    */
   speed?: number;
+
+  direction?: 'left' | 'right';
 }
 
 export default function AutoScrollCarousel({
@@ -44,12 +46,13 @@ export default function AutoScrollCarousel({
   description,
   gap = 40,
   buttonText = "Try it out!",
-  speed = 1
+  speed = 1,
+  direction = 'left'
 }: AutoScrollCarouselProps) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const firstCardRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
-  const duplicatedFeatures = [...features, ...features];
+  const duplicatedFeatures = useMemo(() => [...features, ...features], [features]);
 
   useEffect(() => {
     let animationFrameId: number;
@@ -58,17 +61,25 @@ export default function AutoScrollCarousel({
       if (container && !isPaused) {
         const cardWidth = firstCardRef.current?.offsetWidth || 0;
         const totalWidth = features.length * (cardWidth + gap);
-        
-        if (container.scrollLeft >= totalWidth) {
-          container.scrollLeft -= totalWidth;
+
+        // Handle direction
+        if (direction === 'left') {
+          container.scrollLeft += speed;
+          if (container.scrollLeft >= totalWidth) {
+            container.scrollLeft -= totalWidth;
+          }
+        } else {
+          container.scrollLeft -= (speed-0.5);
+          if (container.scrollLeft <= 0) {
+            container.scrollLeft += totalWidth;
+          }
         }
-        container.scrollLeft += speed;
       }
       animationFrameId = requestAnimationFrame(autoScroll);
     };
     animationFrameId = requestAnimationFrame(autoScroll);
     return () => cancelAnimationFrame(animationFrameId);
-  }, [isPaused, features.length, gap, speed]);
+  }, [isPaused, features.length, gap, speed, direction]);
 
   return (
     <div className="mb-10">

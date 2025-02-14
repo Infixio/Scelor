@@ -175,6 +175,7 @@ export default function Home() {
       'Generates a detailed analysis!'
     ]}
     buttonText="Try it out!"
+    workflowid="ImageAnalysis"
   />
 
   <PremiumCard
@@ -189,6 +190,7 @@ export default function Home() {
     buttonText="Try it out!"
     color1="#00C2FF"
     color2="#2CDB93"
+    workflowid="VideoSummarizer"
   />
 
   <PremiumCard
@@ -203,8 +205,9 @@ export default function Home() {
     buttonText="Try it out!"
     color1="#FF6B6B"
     color2="#FFA500"
+    workflowid="MarketResearcher"
   /></div>
-    <div className='mb-20 flex justify-center'><MainButton color1="#00C2FF" color2="#2CDB93">Explore Workflows</MainButton></div>
+    <div className='mb-20 flex justify-center'><MainButton color1="#00C2FF" color2="#2CDB93"><Link href='/Workflows'>Explore Workflows</Link></MainButton></div>
         {/* Key Features Section */}
         <section className="mb-28">
           <motion.div 

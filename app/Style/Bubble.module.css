@@ -1,0 +1,195 @@
+/* Container for the bubbles */
+.container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 30px;
+    gap: 20px;  /* Adds 20px spacing between each bubble */
+}
+
+/* The bubble element (“drop”) always shows constant animations */
+.drop {
+    width: 350px;
+    height: 350px;
+    position: relative;
+    overflow: hidden; /* Ensures that ripples stay inside the bubble */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    box-shadow: inset 20px 20px 20px rgba(0, 0, 0, 0.05),
+                25px 35px 20px rgba(0, 0, 0, 0.05),
+                25px 20px 20px rgba(0, 0, 0, 0.05),
+                inset 25px 30px 30px rgba(255, 255, 255, 0.9);
+    animation: morph 6s infinite alternate ease-in-out, floating 6s ease-in-out infinite;
+    transition: border-radius 1s ease-in-out;
+}
+
+/* Morphing animation (continually changing the bubble’s shape) */
+@keyframes morph {
+  0% {
+      border-radius: 67% 33% 28% 72% / 59% 52% 48% 41%;
+  }
+  33% {
+      border-radius: 45% 55% 60% 40% / 40% 60% 55% 45%;
+  }
+  66% {
+      border-radius: 20% 80% 70% 30% / 50% 40% 60% 50%;
+  }
+  100% {
+      border-radius: 67% 33% 28% 72% / 59% 52% 48% 41%;
+  }
+}
+
+/* Floating (vertical movement) */
+@keyframes floating {
+  0% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-20px);
+  }
+  100% {
+      transform: translateY(0);
+  }
+}
+
+/* Set initial border radii and delays for each bubble */
+.drop:nth-child(1) {
+    border-radius: 67% 33% 28% 72% / 59% 52% 48% 41%;
+    /* Remove individual margin if relying on gap */
+    /* margin: 20px 30px 30px 0; */
+    animation-delay: 0.3s;
+}
+
+.drop:nth-child(2) {
+    border-radius: 15% 85% 53% 47% / 55% 41% 59% 45%;
+    animation-delay: 0.6s;
+}
+
+/* Optional decorative pseudo-elements */
+.drop::before {
+    content: '';
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background-color: #ffffffc8;
+    top: 50px;
+    left: 80px;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: moveBubble1 4s infinite alternate ease-in-out;
+}
+
+.drop::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: #ffffffc8;
+    top: 90px;
+    left: 110px;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+@keyframes moveBubble1 {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(5px, -5px); }
+  50% { transform: translate(-5px, 5px); }
+  75% { transform: translate(5px, 5px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Content styling inside the bubble */
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 40px 60px;
+    gap: 15px;
+}
+
+.content h2 {
+    margin-bottom: 15px;
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    color: var(--clr);
+    box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.1),
+                inset -2px -5px 10px rgba(255, 255, 255, 1),
+                15px 15px 10px rgba(0, 0, 0, 0.05),
+                15px 10px 15px rgba(0, 0, 0, 0.25);
+}
+
+.content a {
+    position: relative;
+    padding: 10px 20px;
+    background-color: var(--clr);
+    border-radius: 20px;
+    color: #fff;
+    text-shadow: 2px 5px 5px rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background-color 0.5s, color 0.5s;
+    box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.1),
+                inset -2px -5px 10px rgba(255, 255, 255, 0.1),
+                10px 10px 5px rgba(0, 0, 0, 0.05),
+                10px 10px 5px rgba(0, 0, 0, 0.25);
+}
+
+.content a:hover {
+    background-color: #fff;
+    color: var(--clr);
+}
+
+/* Media Queries */
+@media only screen and (max-width: 800px) {
+    .drop {
+        width: 275px;
+        height: 275px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        flex-direction: column;
+    }
+}
+
+/* ===================== */
+/* Ripple Effect on Hover */
+/* ===================== */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);  /* very light ripple */
+    transform: scale(0);
+    pointer-events: none;
+    /* Add a delay before the ripple animation starts */
+    animation: rippleEffect 0.8s ease-out forwards;
+    animation-delay: 0.2s;
+}
+  
+@keyframes rippleEffect {
+    0% {
+      transform: scale(0);
+      opacity: 0.2;
+    }
+    50% {
+      transform: scale(1.2) rotate(3deg);
+      opacity: 0.1;
+    }
+    100% {
+      transform: scale(1.5) rotate(-3deg);
+      opacity: 0;
+    }
+}
